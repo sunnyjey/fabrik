@@ -197,6 +197,14 @@ $view->isMambot = true;
 
 $input->set('itemId', $params->get('itemId', $origItemId));
 
+; ?>
+
+<!--Added Set Module title-->
+<div class="module-title">
+<?php echo $module->title; ?>					
+			</div>
+<?php
+
 // Display the view
 $view->error = $controller->getError();
 echo $view->display();
