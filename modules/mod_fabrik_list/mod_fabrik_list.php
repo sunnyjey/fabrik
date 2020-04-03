@@ -197,7 +197,7 @@ $view->isMambot = true;
 
 $input->set('itemId', $params->get('itemId', $origItemId));
 // Added missing title
-echo '<div class="module-title">' . $module->title . '</div>';
+if($module->showtitle){echo '<div class="module-title">' . $module->title . '</div>';} 
 // Display the view
 $view->error = $controller->getError();
 echo $view->display();
