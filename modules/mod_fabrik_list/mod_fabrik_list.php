@@ -196,7 +196,8 @@ if (!JError::isError($model))
 $view->isMambot = true;
 
 $input->set('itemId', $params->get('itemId', $origItemId));
-// Added missing title
+// Added missing title and Suffix
+echo '<div class="' .$params->get( 'moduleclass_sfx' ) .'" >';
 if($module->showtitle){echo '<div class="module-title">' . $module->title . '</div>';} 
 // Display the view
 $view->error = $controller->getError();
