@@ -47,11 +47,14 @@
 					>
 					<option value="static"></option>
 				</field>
+				<field 
+				       	name="moduleclass_sfx" 
+				       	type="text" 
+				       	description="MOD_FABRIK_FORM_CLASS_SUFFIX_DESC" 
+				       	label="MOD_FABRIK_FORM_CLASS_SUFFIX_LABEL"/>
+				</field>
 		</fieldset>
 			<fieldset addfieldpath="/administrator/components/com_fabrik/models/fields" name="Fabrik">
-				<field name="moduleclass_sfx" type="text" description="MOD_FABRIK_FORM_CLASS_SUFFIX_DESC" label="MOD_FABRIK_FORM_CLASS_SUFFIX_LABEL"/>
-
-				<field label="" name="@spacer" type="spacer"/>
 
 				<field type="formlist" name="formid" default="0" description="MOD_FABRIK_FORM_FORM_DESC" label="MOD_FABRIK_FORM_FORM_LABEL"/>
 
