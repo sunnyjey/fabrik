@@ -16,46 +16,9 @@
 		<filename>mod_fabrik_form.xml</filename>
 		<folder>language</folder>
 	</files>
-	<config>
+		<config>
 		<fields name="params">
-		<fieldset addfieldpath="/administrator/components/com_fabrik/models/fields" name="advanced">
-			<field
-					name="cache"
-					type="list"
-					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC"
-					default="1"
-					filter="integer"
-					>
-					<option value="1">JGLOBAL_USE_GLOBAL</option>
-					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-				</field>
-
-				<field
-					name="cache_time"
-					type="number"
-					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
-					default="900"
-					filter="integer"
-				/>
-
-				<field
-					name="cachemode"
-					type="hidden"
-					default="static"
-					>
-					<option value="static"></option>
-				</field>
-				<field 
-				       	name="moduleclass_sfx" 
-				       	type="text" 
-				       	description="MOD_FABRIK_FORM_CLASS_SUFFIX_DESC" 
-				       	label="MOD_FABRIK_FORM_CLASS_SUFFIX_LABEL"/>
-				</field>
-		</fieldset>
 			<fieldset addfieldpath="/administrator/components/com_fabrik/models/fields" name="Fabrik">
-
 				<field type="formlist" name="formid" default="0" description="MOD_FABRIK_FORM_FORM_DESC" label="MOD_FABRIK_FORM_FORM_LABEL"/>
 
 				<field name="row_id" default="0" description="MOD_FABRIK_FORM_ROW_ID_DESC" label="MOD_FABRIK_FORM_ROW_ID_LABEL" size="4" type="text"/>
@@ -73,7 +36,15 @@
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
-
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="owncache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
 			</fieldset>
 		</fields>
 	</config>
