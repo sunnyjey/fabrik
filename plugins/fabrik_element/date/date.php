@@ -4,7 +4,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  Fabrik.element.date
- * @copyright   Copyright (C) 2005-2016  Media A-Team, Inc. - All rights reserved.
+ * @copyright   Copyright (C) 2005-2020  Media A-Team, Inc. - All rights reserved.
  * @license     GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -71,6 +71,7 @@ class PlgFabrik_ElementDate extends PlgFabrik_ElementList
 	{
         $profiler = JProfiler::getInstance('Application');
         JDEBUG ? $profiler->mark("renderListData: {$this->element->plugin}: start: {$this->element->name}") : null;
+		Html::calendar();
 
         if ($data == '')
 		{
@@ -285,7 +286,7 @@ class PlgFabrik_ElementDate extends PlgFabrik_ElementList
 			$localDate = $this->displayDate($gmt);
 
 			// Get the formatted time
-			$time = ($params->get('date_showtime', 0)) ? $localDate->format($timeFormat, true) : '';
+			$time = ((bool) $element->hidden || $params->get('date_showtime', 0)) ? $localDate->format($timeFormat, true) : '';
 
 			// Formatted date
 			$date = $localDate->format($format, true);
@@ -297,7 +298,7 @@ class PlgFabrik_ElementDate extends PlgFabrik_ElementList
 		}
 
 		// Build HTML widget
-		if ($params->get('date_showtime', 0))
+		if ($params->get('date_showtime', 0) || (bool) $element->hidden)
 		{
 			// Can't have names as simply [] as json only picks up the last one
 			$timeElName = $name . '[time]';
@@ -321,7 +322,7 @@ class PlgFabrik_ElementDate extends PlgFabrik_ElementList
 		$str[] = '<div class="fabrikSubElementContainer" id="' . $id . '">';
 		$str[] = $this->calendar($date, $name, $id . '_cal', $format, $calOpts, $repeatCounter);
 
-		if ($params->get('date_showtime', 0))
+		if ($params->get('date_showtime', 0) || (bool) $element->hidden)
 		{
 			$this->timeButton($timeElName, $time, $str);
 		}
@@ -2864,6 +2865,10 @@ class PlgFabrik_ElementDate extends PlgFabrik_ElementList
 					$timeFormat = 'g:i A';
 				}
 			}
+		}
+		else if ((bool) $this->getElement()->hidden)
+		{
+			$timeFormat = 'H:i:s';
 		}
 
 		return $timeFormat;

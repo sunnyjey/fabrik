@@ -4,7 +4,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  Fabrik.element.fileupload
- * @copyright   Copyright (C) 2005-2016  Media A-Team, Inc. - All rights reserved.
+ * @copyright   Copyright (C) 2005-2020  Media A-Team, Inc. - All rights reserved.
  * @license     GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -937,7 +937,8 @@ class PlgFabrik_ElementFileupload extends PlgFabrik_Element
 					{
 						$title = $thisRow->$title_name;
 						$title = FabrikWorker::JSONtoData($title, true);
-						$title = $title[$i];
+						//$title = $title[$i];
+						$title = array_key_exists($i, $title) ? $title[$i] : '';
 					}
 				}
 
@@ -1002,7 +1003,7 @@ class PlgFabrik_ElementFileupload extends PlgFabrik_Element
 
 		if ($params->get('fu_download_append', '0') === '1')
 		{
-			return $render->output . '<div>' . $downloadHTML . '</div>';;
+			return $render->output . '<div  class="fabrik-fu-download-append">' . $downloadHTML . '</div>';;
 		}
 		else
 		{
